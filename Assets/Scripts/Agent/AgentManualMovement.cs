@@ -5,10 +5,6 @@ public class AgentMovementController : MonoBehaviour
     public float moveSpeed = 5f; // Forward movement speed
     public float rotationSpeed = 200f; // Rotation speed
     public float jumpForce = 7f; // Jump force
-    //public float cameraSensitivity = 100f; // Camera sensitivity
-    //public Transform cameraTransform; // Camera following the agent
-    //public float cameraDistance = 5f; // Distance of the camera from the character
-    //public float cameraHeight = 2f; // Height of the camera above the character
 
     private Rigidbody rb;
     private Animator animator;
@@ -26,7 +22,6 @@ public class AgentMovementController : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        //HandleCamera();
     }
 
     void HandleMovement()
@@ -77,26 +72,6 @@ public class AgentMovementController : MonoBehaviour
             animator.SetBool("isRolling", false);
         }
     }
-
-    //void HandleCamera()
-    //{
-    //    if (cameraTransform == null) return;
-
-    //    // Set camera position
-    //    Vector3 cameraPosition = transform.position - transform.forward * cameraDistance + Vector3.up * cameraHeight;
-    //    cameraTransform.position = Vector3.Lerp(cameraTransform.position, cameraPosition, Time.deltaTime * 5);
-
-    //    // Rotate camera based on mouse movement
-    //    float mouseX = Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
-    //    cameraTransform.RotateAround(transform.position, Vector3.up, mouseX);
-
-    //    cameraTransform.LookAt(transform.position + Vector3.up);
-    //}
-
-    /// <summary>
-    /// Detect when the agent touches a surface. Checks each contact point to ensure the normal is pointing upwards,
-    /// indicating the agent is on a horizontal surface and not touching a wall.
-    /// </summary>
     void OnCollisionEnter(Collision collision)
     {
         // Detect when the agent touches a surface
