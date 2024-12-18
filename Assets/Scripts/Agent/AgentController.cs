@@ -13,12 +13,20 @@ public class AgentController : Agent
     private Rigidbody rb;
     private Animator animator;
 
-    public override void Initialize()
+    public override void OnEpisodeBegin()
     {
-
         rb = GetComponent<Rigidbody>();// רכיב Rigidbody כדי לשלוט על התנועה הפיזיקלית של הסוכן
         animator = GetComponent<Animator>();
+        // Initialize the agent's position
+        transform.localPosition = new Vector3(-3.972f, 4f, -4.292f);
     }
+
+    //public override void Initialize()
+    //{
+
+    //    rb = GetComponent<Rigidbody>();// רכיב Rigidbody כדי לשלוט על התנועה הפיזיקלית של הסוכן
+    //    animator = GetComponent<Animator>();
+    //}
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -35,9 +43,8 @@ public class AgentController : Agent
         
         if (move != 0)
         {
-            //rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.deltaTime);
-            rb.MovePosition(rb.position + transform.forward * move * Time.deltaTime * moveSpeed);
             animator.SetBool("isWalking", true);
+            rb.MovePosition(rb.position + transform.forward * move * Time.deltaTime * moveSpeed);
         }
         else
         {
