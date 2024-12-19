@@ -1684,22 +1684,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8288018217139850264, guid: 05bcf3023cb735c43bca50eca3b1f6b5, type: 3}
   m_PrefabInstance: {fileID: 191807059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &528842707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528915632633196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
 --- !u!114 &528842708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,7 +2302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &791191381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2859,7 +2843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fca464e7e984bf459e63dc90bc19a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 791191387}
+  target: {fileID: 4431084396304532}
   cameraDistance: 1
   cameraHeight: 1
   cameraSensitivity: 300
@@ -3610,7 +3594,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528915632633196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c018744f7b658694b9c4021305230334, type: 3}
   m_Name: 
@@ -3627,7 +3611,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528915632633196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
@@ -3667,6 +3651,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  moveSpeed: 1
+  rotationSpeed: 200
 --- !u!4 &1532184414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6201192189230412723, guid: a1a03eb93d2182846bd7225981479278, type: 3}
@@ -5386,7 +5372,6 @@ GameObject:
   - component: {fileID: 114253073072966558}
   - component: {fileID: 95320324296278494}
   - component: {fileID: 528842708}
-  - component: {fileID: 528842707}
   - component: {fileID: 528842715}
   - component: {fileID: 1479241260}
   - component: {fileID: 1479241261}
@@ -5398,7 +5383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1533244439226274
 GameObject:
   m_ObjectHideFlags: 0
