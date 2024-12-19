@@ -36,25 +36,25 @@ public class RobotFreeAnimEditor : Editor
 
 	public override void OnInspectorGUI()
     {
-		GUI.DrawTexture(rect, testImage);
-		style.wordWrap = true;
-		DrawText("*Upgrades*\n", 35, new Color(1f, 0.2373f, 0f, 1f));
-		GUILayout.Space(10);
-		DrawText("Get More! Do More! With expansion Packs.\n", 15, Color.white);
-		GUILayout.Space(40);
+		//GUI.DrawTexture(rect, testImage);
+		//style.wordWrap = true;
+		//DrawText("*Upgrades*\n", 35, new Color(1f, 0.2373f, 0f, 1f));
+		//GUILayout.Space(10);
+		//DrawText("Get More! Do More! With expansion Packs.\n", 15, Color.white);
+		//GUILayout.Space(40);
 
 
-		DrawButton("Animation Expansion 1", onButtonClick: () => 
-		{
-			Application.OpenURL("https://assetstore.unity.com/packages/3d/characters/robots/robot-sphere-basic-pack-147055");
-		}, Color.red);
-		GUILayout.Space(5);
+		//DrawButton("Animation Expansion 1", onButtonClick: () => 
+		//{
+		//	Application.OpenURL("https://assetstore.unity.com/packages/3d/characters/robots/robot-sphere-basic-pack-147055");
+		//}, Color.red);
+		//GUILayout.Space(5);
 
-		DrawButton("Texture Expansion (PBR) 1", onButtonClick: () =>
-		{
-			Application.OpenURL("https://assetstore.unity.com/packages/3d/characters/robots/robot-sphere-texture-pack-1-160553");
-		}, Color.green);
-		GUILayout.Space(20);
+		//DrawButton("Texture Expansion (PBR) 1", onButtonClick: () =>
+		//{
+		//	Application.OpenURL("https://assetstore.unity.com/packages/3d/characters/robots/robot-sphere-texture-pack-1-160553");
+		//}, Color.green);
+		//GUILayout.Space(20);
 
 		//base.OnInspectorGUI();
 	}
