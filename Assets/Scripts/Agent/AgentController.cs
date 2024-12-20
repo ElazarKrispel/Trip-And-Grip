@@ -3,10 +3,13 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class BasicAgent : Agent
+public class AgentController : Agent
 {
     public float moveSpeed = 5f; // Forward movement speed
     public float rotationSpeed = 200f; // Rotation speed
+
+    public string[] detectableTags;
+
     private Animator animator;
     public override void Initialize()
     {
@@ -19,6 +22,22 @@ public class BasicAgent : Agent
     {
         //Debug.Log("CollectObservations called");
         //sensor.AddObservation(transform.position.x); // דוגמה לתצפית
+
+
+        // Raycasting לאיסוף תצפיות
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 10f))
+        {
+            // בדוק אם התג של האובייקט תואם לאחד התגים שהגדרנו
+            foreach (string tag in detectableTags)
+            {
+                if (hit.collider.CompareTag(tag))
+                {
+                    Debug.Log($"Detected {tag}: {hit.collider.gameObject.name}");
+                }
+            }
+            //Debug.Log($"Saw: {hit.collider.gameObject.name}");
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions)

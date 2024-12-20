@@ -2875,7 +2875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5966120179345226267, guid: 3efb4424c3ecfd443b7ba36330fb71a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8456614
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 5966120179345226267, guid: 3efb4424c3ecfd443b7ba36330fb71a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3620,8 +3620,7 @@ MonoBehaviour:
   m_DetectableTags:
   - PositiveObject
   - NegativeObject
-  - Wall
-  m_RaysPerDirection: 6
+  m_RaysPerDirection: 1
   m_MaxRayDegrees: 120
   m_SphereCastRadius: 0.5
   m_RayLength: 6
@@ -3631,8 +3630,8 @@ MonoBehaviour:
   m_ObservationStacks: 2
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  rayHitColor: {r: 0.19971514, g: 0.6415094, b: 0.46265933, a: 1}
+  rayMissColor: {r: 0.8805031, g: 0.16336374, b: 0.43729147, a: 1}
   m_StartVerticalOffset: 0.09
   m_EndVerticalOffset: 0.19
 --- !u!114 &1479241263
@@ -3653,6 +3652,9 @@ MonoBehaviour:
   MaxStep: 0
   moveSpeed: 1
   rotationSpeed: 200
+  detectableTags:
+  - NegativeObject
+  - PositiveObject
 --- !u!4 &1532184414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6201192189230412723, guid: a1a03eb93d2182846bd7225981479278, type: 3}
@@ -9063,7 +9065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528915632633196}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
