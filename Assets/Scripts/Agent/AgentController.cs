@@ -11,19 +11,24 @@ public class AgentController : Agent
     public string[] detectableTags;
 
     private Animator animator;
+    private Rigidbody rb;
+
     public override void Initialize()
     {
-        //Debug.Log("Initialized");
+        // Debug.Log("Initialized");
         transform.localPosition = new Vector3(-3.972f, 0f, -4.292f);
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+
+        if (rb == null)
+        {
+            Debug.LogError("No Rigidbody attached to the Agent!");
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        //Debug.Log("CollectObservations called");
-        //sensor.AddObservation(transform.position.x); // דוגמה לתצפית
-
-
+        // Debug.Log("CollectObservations called");
         // Raycasting לאיסוף תצפיות
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 10f))
@@ -36,7 +41,7 @@ public class AgentController : Agent
                     Debug.Log($"Detected {tag}: {hit.collider.gameObject.name}");
                 }
             }
-            //Debug.Log($"Saw: {hit.collider.gameObject.name}");
+            // Debug.Log($"Saw: {hit.collider.gameObject.name}");
         }
     }
 
@@ -45,13 +50,14 @@ public class AgentController : Agent
         float move = actions.ContinuousActions[0];
         float rotate = actions.ContinuousActions[1];
 
-        //Debug.Log($"Received Move: {move}, Rotate: {rotate}");
+        // Debug.Log($"Received Move: {move}, Rotate: {rotate}");
 
         // תנועה קדימה
-        if (move != 0)
+        if (move != 0 && rb != null)
         {
             animator.SetBool("isWalking", true);
-            transform.position += transform.forward * move * moveSpeed * Time.deltaTime;
+            Vector3 newPosition = rb.position + transform.forward * move * moveSpeed * Time.deltaTime;
+            rb.MovePosition(newPosition);
         }
         else
         {
@@ -65,16 +71,15 @@ public class AgentController : Agent
         }
     }
 
-
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        //Debug.Log("Heuristic called");
+        // Debug.Log("Heuristic called");
         var continuousActions = actionsOut.ContinuousActions;
 
         continuousActions[0] = Input.GetKey(KeyCode.W) ? 1f : 0f;
         continuousActions[1] = Input.GetKey(KeyCode.A) ? -1f : Input.GetKey(KeyCode.D) ? 1f : 0f;
 
-        //Debug.Log($"Move: {continuousActions[0]}, Rotate: {continuousActions[1]}");
+        // Debug.Log($"Move: {continuousActions[0]}, Rotate: {continuousActions[1]}");
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -95,4 +100,3 @@ public class AgentController : Agent
         }
     }
 }
-
