@@ -67,7 +67,9 @@ public class AgentController : Agent
         // סיבוב
         if (rotate != 0)
         {
-            transform.Rotate(Vector3.up, rotate * rotationSpeed * Time.deltaTime);
+            Quaternion deltaRotation = Quaternion.Euler(0f, rotate * rotationSpeed * Time.deltaTime, 0f);
+            rb.MoveRotation(rb.rotation * deltaRotation);
+
         }
     }
 
