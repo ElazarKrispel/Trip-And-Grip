@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5014872816412228643}
   - component: {fileID: 5078202419022610194}
   m_Layer: 0
-  m_Name: Crate_With_Chain (2)
+  m_Name: Crate_With_Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4968883017393859235
 Transform:
@@ -94,7 +94,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7470174369509173341}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0bd9652ec22b185498cdfeebca736b44, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -108,4 +108,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2389778268287701146, guid: 2fec3c15d3616c446afda98bea726858, type: 3}
+  m_Mesh: {fileID: -2389778268287701146, guid: 00ca8f6bc824486418b2370f1cf0e5bc, type: 3}

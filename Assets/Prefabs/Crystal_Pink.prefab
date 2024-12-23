@@ -17,7 +17,7 @@ GameObject:
   m_TagString: NegativeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5966120179345226267
 Transform:
@@ -94,7 +94,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7517640550293789803}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0bd9652ec22b185498cdfeebca736b44, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -108,4 +108,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2387971039750696633, guid: 4973be1bf26def1489a95d3c62d322c9, type: 3}
+  m_Mesh: {fileID: 2387971039750696633, guid: 084d02205a10a0a4d8a787da2bb0c82e, type: 3}

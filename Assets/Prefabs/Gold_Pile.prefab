@@ -17,7 +17,7 @@ GameObject:
   m_TagString: PositiveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7466673699623120109
 Transform:
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 217866797129339468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.35, y: 0.007, z: 3.587}
+  m_LocalPosition: {x: -4.35, y: 0, z: 3.587}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -94,7 +94,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217866797129339468}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0bd9652ec22b185498cdfeebca736b44, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -108,4 +108,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1440418747057453135, guid: 7a66077e8e5476a4cb4894de83546ae6, type: 3}
+  m_Mesh: {fileID: 1440418747057453135, guid: b4599e2d03ca6814681f0307438394c5, type: 3}
