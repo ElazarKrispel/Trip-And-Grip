@@ -10,14 +10,14 @@ public class AgentController : Agent
 
     public string[] detectableTags;
 
-    private Animator animator;
+   // private Animator animator;
     private Rigidbody rb;
 
     public override void Initialize()
     {
-        // Debug.Log("Initialized");
-        transform.localPosition = new Vector3(-3.972f, 0f, -4.292f);
-        animator = GetComponent<Animator>();
+         Debug.Log("Initialized");
+        transform.localPosition = new Vector3(-3.972f, 5f, -4.292f);
+       // animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
         if (rb == null)
@@ -55,14 +55,14 @@ public class AgentController : Agent
         // תנועה קדימה
         if (move != 0 && rb != null)
         {
-            animator.SetBool("isWalking", true);
+            // animator.SetBool("isWalking", true);
             Vector3 newPosition = rb.position + transform.forward * move * moveSpeed * Time.deltaTime;
             rb.MovePosition(newPosition);
         }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
+        // else
+        //{
+        // animator.SetBool("isWalking", false);
+        //  }
 
         // סיבוב
         if (rotate != 0)
@@ -75,7 +75,7 @@ public class AgentController : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        // Debug.Log("Heuristic called");
+         Debug.Log("Heuristic called");
         var continuousActions = actionsOut.ContinuousActions;
 
         continuousActions[0] = Input.GetKey(KeyCode.W) ? 1f : 0f;
