@@ -1,0 +1,29 @@
+{
+    "robotAgent": {
+        "checkpoints": [
+            {
+                "steps": 213120,
+                "file_path": "results\\test1\\robotAgent\\robotAgent-213120.onnx",
+                "reward": null,
+                "creation_time": 1736773020.283031,
+                "auxillary_file_paths": [
+                    "results\\test1\\robotAgent\\robotAgent-213120.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 213120,
+            "file_path": "results\\test1\\robotAgent.onnx",
+            "reward": null,
+            "creation_time": 1736773020.283031,
+            "auxillary_file_paths": [
+                "results\\test1\\robotAgent\\robotAgent-213120.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.29.0",
+        "torch_version": "2.4.1+cu118"
+    }
+}
