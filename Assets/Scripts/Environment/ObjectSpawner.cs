@@ -15,6 +15,7 @@ public class ObjectSpawner : MonoBehaviour
     private int currentNegativeCount;
 
     private List<GameObject> positiveObjects = new List<GameObject>(); // Tracking positive objects
+    private List<GameObject> negativeObjects = new List<GameObject>();
     private int stepCounter = 0; // Step counter
     private int cleanStepInterval = 50; // Clean tracking list every 50 steps
 
@@ -50,7 +51,8 @@ public class ObjectSpawner : MonoBehaviour
         {
             if (negativePrefabs.Count > 0)
             {
-                SpawnObject(negativePrefabs[Random.Range(0, negativePrefabs.Count)]);
+                GameObject spawnedObject = SpawnObject(negativePrefabs[Random.Range(0, negativePrefabs.Count)]);
+                negativeObjects.Add(spawnedObject);
             }
         }
     }
@@ -79,6 +81,7 @@ public class ObjectSpawner : MonoBehaviour
             Destroy(child.gameObject);
         }
         positiveObjects.Clear();
+        negativeObjects.Clear();
     }
 
     public void IncreaseObjectCounts()
@@ -97,7 +100,47 @@ public class ObjectSpawner : MonoBehaviour
             positiveObjects.RemoveAll(obj => obj == null); // Cleaning up destroyed objects
         }
 
+        // Check if all positive objects are collected
+        if (positiveObjects.Count == 0)
+        {
+            ReinitializePositiveObjects(initialPositiveCount); // Reinitialize to 30 objects
+            return true;
+        }
+
         // Checking if all positive objects have been collected
         return positiveObjects.Count == 0;
+    }
+
+    public bool AllNegativeObjectsCollected()
+    {
+        stepCounter++; // Updating step counter
+
+        // Updating the list only every cleanStepInterval steps
+        if (stepCounter % cleanStepInterval == 0)
+        {
+            negativeObjects.RemoveAll(obj => obj == null); // Cleaning up destroyed objects
+        }
+
+        // Check if all positive objects are collected
+        if (negativeObjects.Count == 0)
+        {
+            ReinitializeNegativeObjects(initialPositiveCount); // Reinitialize to 30 objects
+            return true;
+        }
+
+        // Checking if all positive objects have been collected
+        return negativeObjects.Count == 0;
+    }
+
+    private void ReinitializePositiveObjects(int count)
+    {
+        currentPositiveCount = count; // Set the current count to the specified number
+        SpawnObjects(); // Respawn positive objects
+    }
+
+    private void ReinitializeNegativeObjects(int count)
+    {
+        currentNegativeCount = count; // Set the current count to the specified number
+        SpawnObjects(); // Respawn positive objects
     }
 }

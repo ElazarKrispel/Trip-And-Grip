@@ -9,6 +9,8 @@ public class AgentController : Agent
     public float moveSpeed = 5f; // Forward movement speed
     public float rotationSpeed = 200f; // Rotation speed
     public string[] detectableTags;
+
+    int wereToMove = 1;
     /*
     // Parameters for penalty for standing still
     public float stationaryThreshold = 2f; // Minimum time threshold for penalty
@@ -65,14 +67,49 @@ public class AgentController : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        //// Add agent position (x, z)
-        //Vector3 position = transform.position;
-        //sensor.AddObservation(position.x); // Add X
-        //sensor.AddObservation(position.z); // Add Z
+        sensor.AddObservation(transform.localPosition); // Agent's position
+        sensor.AddObservation(positiveObjectsCollected); // Positive objects collected
+        sensor.AddObservation(negativeObjectsCollected); // Negative objects collected
 
-        //// Add agent rotation angle
-        //float rotation = transform.rotation.eulerAngles.y; // Rotation angle in Y
-        //sensor.AddObservation(rotation);
+        // Add distance to nearest positive and negative objects
+        GameObject nearestPositive = FindNearestObject("PositiveObject");
+        GameObject nearestNegative = FindNearestObject("NegativeObject");
+
+        if (nearestPositive != null)
+        {
+            sensor.AddObservation(Vector3.Distance(transform.position, nearestPositive.transform.position));
+        }
+        else
+        {
+            sensor.AddObservation(0f); // No positive objects
+        }
+
+        if (nearestNegative != null)
+        {
+            sensor.AddObservation(Vector3.Distance(transform.position, nearestNegative.transform.position));
+        }
+        else
+        {
+            sensor.AddObservation(0f); // No negative objects
+        }
+    }
+
+    private GameObject FindNearestObject(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+        GameObject nearest = null;
+        float minDistance = float.MaxValue;
+
+        foreach (GameObject obj in objects)
+        {
+            float distance = Vector3.Distance(transform.position, obj.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearest = obj;
+            }
+        }
+        return nearest;
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -84,8 +121,21 @@ public class AgentController : Agent
         if (move != 0 && rb != null)
         {
             //animator.SetBool("isWalking", true);
-            Vector3 newPosition = rb.position + transform.forward * move * moveSpeed * Time.deltaTime;
-            rb.MovePosition(newPosition);
+            Ray ray = new Ray(transform.position, transform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, 1f) && hit.collider.CompareTag("Wall"))
+            {
+                rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, wereToMove*90f, 0f));
+                wereToMove *= -1;
+            }
+            else
+            {
+                Vector3 newPosition = rb.position + transform.forward * move * moveSpeed * Time.deltaTime;
+                rb.MovePosition(newPosition);
+            }
+            if (move > 0)
+            {
+                AddReward(0.1f);
+            }
         }
         else
         {
@@ -127,6 +177,12 @@ public class AgentController : Agent
             EndEpisode();    // End the episode
         }
 
+        if (objectSpawner.AllNegativeObjectsCollected())
+        {
+            AddReward(2.0f); // Bonus for success
+            EndEpisode();    // End the episode
+        }
+
         //AddReward(-0.00001f); // Time penalty
 
         /*
@@ -157,26 +213,27 @@ public class AgentController : Agent
     {
         if (collision.gameObject.CompareTag("PositiveObject"))
         {
-            AddReward(2.0f);
+            AddReward(5.0f);
             Destroy(collision.gameObject);
             positiveObjectsCollected++;
-            EndEpisode();
+            //EndEpisode();
         }
         else if (collision.gameObject.CompareTag("NegativeObject"))
         {
-            AddReward(-1.0f);
+            AddReward(-9f);
             Destroy(collision.gameObject);
             negativeObjectsCollected++;   
-            EndEpisode();
+            //EndEpisode();
             //if(negativeObjectsCollected >= 3)
             //    EndEpisode();
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {
-            AddReward(-0.5f);
+            AddReward(-3f);
             WallObjectsCollisions++;
-            if (WallObjectsCollisions >= 10)
-                EndEpisode();
+
+            //if (WallObjectsCollisions >= 10)
+                //EndEpisode();
         }
     }
 }
