@@ -11,8 +11,8 @@ public class ObjectSpawner : MonoBehaviour
     public Vector2 spawnAreaSize;
     public Transform ground;
 
-    private int currentPositiveCount;
-    private int currentNegativeCount;
+    public static int currentPositiveCount = 0;
+    public static int currentNegativeCount = 0;
 
     private List<GameObject> positiveObjects = new List<GameObject>(); // Tracking positive objects
     private List<GameObject> negativeObjects = new List<GameObject>();

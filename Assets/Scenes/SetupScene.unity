@@ -946,8 +946,8 @@ MonoBehaviour:
   - {fileID: 217866797129339468, guid: 8f6af7757e8fdb742b8a7bcbedcd778e, type: 3}
   negativePrefabs:
   - {fileID: 7517640550293789803, guid: 3efb4424c3ecfd443b7ba36330fb71a7, type: 3}
-  initialPositiveCount: 15
-  initialNegativeCount: 45
+  initialPositiveCount: 30
+  initialNegativeCount: 30
   spawnAreaSize: {x: 10, y: 10}
   ground: {fileID: 1107251376}
 --- !u!114 &528842708
@@ -972,9 +972,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: f4c55a120ea14114a8060ac940af1ee7, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 6f56611008845f64c93dfd460e6d609f, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: robotAgent
   TeamId: 0
   m_UseChildSensors: 1

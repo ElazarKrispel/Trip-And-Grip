@@ -7,33 +7,6 @@
     "robotAgent": {
         "checkpoints": [
             {
-                "steps": 599936,
-                "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-599936.onnx",
-                "reward": null,
-                "creation_time": 1737893907.4474604,
-                "auxillary_file_paths": [
-                    "results\\RobotAgent\\robotAgent\\robotAgent-599936.pt"
-                ]
-            },
-            {
-                "steps": 602954,
-                "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-602954.onnx",
-                "reward": null,
-                "creation_time": 1737893939.991744,
-                "auxillary_file_paths": [
-                    "results\\RobotAgent\\robotAgent\\robotAgent-602954.pt"
-                ]
-            },
-            {
-                "steps": 623562,
-                "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-623562.onnx",
-                "reward": null,
-                "creation_time": 1737897436.8204021,
-                "auxillary_file_paths": [
-                    "results\\RobotAgent\\robotAgent\\robotAgent-623562.pt"
-                ]
-            },
-            {
                 "steps": 624970,
                 "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-624970.onnx",
                 "reward": null,
@@ -50,15 +23,42 @@
                 "auxillary_file_paths": [
                     "results\\RobotAgent\\robotAgent\\robotAgent-644170.pt"
                 ]
+            },
+            {
+                "steps": 649930,
+                "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-649930.onnx",
+                "reward": null,
+                "creation_time": 1738490010.7889621,
+                "auxillary_file_paths": [
+                    "results\\RobotAgent\\robotAgent\\robotAgent-649930.pt"
+                ]
+            },
+            {
+                "steps": 664778,
+                "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-664778.onnx",
+                "reward": null,
+                "creation_time": 1738490245.7449389,
+                "auxillary_file_paths": [
+                    "results\\RobotAgent\\robotAgent\\robotAgent-664778.pt"
+                ]
+            },
+            {
+                "steps": 665418,
+                "file_path": "results\\RobotAgent\\robotAgent\\robotAgent-665418.onnx",
+                "reward": null,
+                "creation_time": 1738490741.4872432,
+                "auxillary_file_paths": [
+                    "results\\RobotAgent\\robotAgent\\robotAgent-665418.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 644170,
+            "steps": 665418,
             "file_path": "results\\RobotAgent\\robotAgent.onnx",
             "reward": null,
-            "creation_time": 1737898908.4561791,
+            "creation_time": 1738490741.4872432,
             "auxillary_file_paths": [
-                "results\\RobotAgent\\robotAgent\\robotAgent-644170.pt"
+                "results\\RobotAgent\\robotAgent\\robotAgent-665418.pt"
             ]
         }
     }

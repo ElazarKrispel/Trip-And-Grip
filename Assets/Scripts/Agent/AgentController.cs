@@ -125,7 +125,7 @@ public class AgentController : Agent
             if (Physics.Raycast(ray, out RaycastHit hit, 1f) && hit.collider.CompareTag("Wall"))
             {
                 rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, wereToMove*90f, 0f));
-                wereToMove *= -1;
+                //wereToMove *= -1;
             }
             else
             {
@@ -147,29 +147,6 @@ public class AgentController : Agent
             Quaternion deltaRotation = Quaternion.Euler(0f, rotate * rotationSpeed * Time.deltaTime, 0f);
             rb.MoveRotation(rb.rotation * deltaRotation);
         }
-        /*
-        // Negative reward for standing still
-        if (IsAgentStationary())
-        {
-            timeStationary += Time.deltaTime;
-
-            // If the threshold time has passed, add penalty
-            if (timeStationary > stationaryThreshold)
-            {
-                AddReward(penaltyAmount);
-                Debug.Log($"penalty added: {penaltyAmount}");
-
-                timeStationary = 0f; // Reset the counter
-                //Debug.Log("Stationary too long! Penalty applied.");
-            }
-        }// Check if the agent is standing still
-        else
-        {
-            timeStationary = 0f; // Reset the counter if the agent moved
-        }
-        // Update the last position
-        lastPosition = transform.position;
-        */
         //Check if all positive objects have been collected
         if (objectSpawner.AllPositiveObjectsCollected())
         {
@@ -215,6 +192,7 @@ public class AgentController : Agent
         {
             AddReward(5.0f);
             Destroy(collision.gameObject);
+            ObjectSpawner.currentPositiveCount--;
             positiveObjectsCollected++;
             //EndEpisode();
         }
@@ -222,6 +200,7 @@ public class AgentController : Agent
         {
             AddReward(-9f);
             Destroy(collision.gameObject);
+            ObjectSpawner.currentNegativeCount --;
             negativeObjectsCollected++;   
             //EndEpisode();
             //if(negativeObjectsCollected >= 3)
